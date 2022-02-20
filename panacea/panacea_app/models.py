@@ -7,3 +7,11 @@ class TempDb(models.Model):
     ph_no = models.CharField(max_length=15)
     class Meta:
         db_table = "tempdb"
+
+class Patient(models.Model):   
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    password = models.CharField(max_length=100)
+    class Meta:
+        db_table = "patient"
+        

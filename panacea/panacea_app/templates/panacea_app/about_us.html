@@ -1,0 +1,78 @@
+{% extends "panacea_app/base.html" %}
+{% load static %}
+
+
+
+{% block connectcss %} 
+<link rel="stylesheet" href="{% static 'panacea_app/about_us.css' %}">
+{% endblock connectcss %}
+
+{% block content %} 
+
+<div class="about-section">
+    <h1>About Us</h1>
+    <p>We are a group of engineering students</p>
+    <p>We've built this website to aid and help people and make maximum use of digital platform</p>
+  </div>
+  
+  <h2 style="text-align:center">Our Team</h2>
+  <div class="row" style="margin-left: 100px;">
+    <div class="column" style="width: 550px; margin-right: 50px;">
+      <div class="card">
+        <img src="{% static 'panacea_app/sneha.jpg' %}"   alt="Sneha" >
+        <div class="container">
+          <h2>Sneha Kothi</h2>
+          <p class="title">CEO & Founder</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>sneha.kothi@somaiya.edu</p>
+         
+        </div>
+      </div>
+    </div>
+  
+    <div class="column" style="width: 550px; margin-right: 50px;">
+      <div class="card">
+        <img src="{% static 'panacea_app/ebrahim.jpg' %}"   alt="Ebrahim" >
+        <div class="container">
+          <h2>Ebrahim Malkapurwala</h2>
+          <p class="title">Art Director</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>ebrahim.m@somaiya.edu</p>
+         
+        </div>
+      </div>
+    </div>
+
+    <div class="column" style="width: 550px; margin-right: 50px;">
+        <div class="card">
+          <img src="{% static 'panacea_app/nayan.jpg' %}" alt="Nayan" >
+          <div class="container">
+            <h2>Nayan Mandliya</h2>
+            <p class="title">Art Director</p>
+            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>nayan.mandliya@somaiya.edu</p>
+           
+          </div>
+        </div>
+      </div>
+  
+    <div class="column" style="width: 550px ;margin-right: 50px;">
+      <div class="card">
+        <img src="{% static 'panacea_app/hussein.jpg' %}" alt="Hussein" >
+        <div class="container">
+          <h2>Hussein Motiwala</h2>
+          <p class="title">Designer</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>hussein.m@somaiya.edu</p>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content %}
+
+{% block script %} 
+
+{% endblock script %}
