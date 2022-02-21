@@ -30,7 +30,8 @@
 <body style="background-color:#EEEEEE;">
     <div class="container right-panel-active" id="container" style="height: 90%;">
         <div class="form-container sign-up-container">
-            <form action="#" method="get">
+            <form method="post">
+                {% csrf_token %}
                 <h1>Create Account</h1>
                 <!-- <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -38,27 +39,23 @@
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your email for registration</span> -->
-                <input type="text" placeholder="Name" style="margin:15px 7px 7px 7px" required />
-                <input type="email" placeholder="Email" style="margin-bottom: 7px" required />
-                <input type="password" placeholder="Password" style="margin-bottom: 7px" required />
-                <input type="password" placeholder="Confirm Password" style="margin-bottom: 7px" required />
-                <input type="text" placeholder="Are you a doctor or a Patient?" style="margin-bottom: 7px" required />
-                
-                <div class="btn-group" style="margin: 20px;">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #11CB95;border: #11CB95;">
-                      Are you a doctor or a patient?<span class="caret"></span></button>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Doctor</a></li>
-                      <li><a class="dropdown-item" href="#">Patient</a></li>
-                    </ul>
-                  </div>
-                <button type="submit" style="margin-top: 15px;" ><a href="{% url 'doctordetails' %}" style="text-decoration: none;color: inherit;">Sign Up</a></button>
-                
+                <input name="name" type="text" placeholder="Name" style="margin:15px 7px 7px 7px" required />
+                <input name="email" type="email" placeholder="Email" style="margin-bottom: 7px" required />
+                <input name="password" type="password" placeholder="Password" style="margin-bottom: 7px" required />
+                <input name="con_password" type="password" placeholder="Confirm Password" style="margin-bottom: 7px" required />
+                <select name="category">
+                    <option value="doctor">Doctor</option>
+                    <option value="patient">Patient</option>
+                </select>
+                <br>
+                <input style="display: None" name="login" value="login">
+                <button type="submit">Register</button>
+                {% comment %} <input type="submit" value="Submit" class="btn" style="padding: 20px 20px; background-color: #11CB95"> {% endcomment %}
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form method="post">
+                {% csrf_token %}
                 <h1>Sign in</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>

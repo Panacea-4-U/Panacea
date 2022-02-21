@@ -8,14 +8,14 @@
 {% block content %} 
 <body>
     <div class="container">
-        <form action="action_page.php">
-      
+        <form method="post">
+          {% csrf_token %}
           <label for="fname">First Name</label>
           <input type="text" id="fname" name="firstname" placeholder="Your name..">
       
-          <label for="lname">Last Name</label>
-          <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-      
+          <label for="lname">Email</label>
+          <input type="email" id="lname" name="email" placeholder="Email..">
+          <br>
           <label for="country">Country</label>
           <select id="country" name="country">
             <option disabled selected value> -- select an option -- </option>

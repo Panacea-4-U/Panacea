@@ -1,7 +1,11 @@
+from re import L
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from panacea_app.models import Patient, TempDb
+from panacea_app.models import Patient, TempDb, Doctor
 from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
+from django.core.mail import send_mail
+from random import randint
 # Create your views here.
 
 def home(request):
@@ -12,19 +16,31 @@ def landingpage(request):
 
 def login_register(request):
     if (request.method == "POST"):
+        pd_id=randint(1000000000,9999999999)
         name = request.POST.get("name")
         email = request.POST.get("email")
         password = request.POST.get("password")
-        confpass = request.POST.get("confpass")
+        confpass = request.POST.get("con_password")
         category = request.POST.get("category")
+        lic_no = randint(1000000000,9999999999)
         if(password == confpass ):
-            if (category == "Patient"):
+            if (category == "patient"):
                 patient = Patient()
+                patient.pat_id=pd_id
                 patient.name = name
                 patient.email = email
                 patient.password = password
                 patient.save()
-                return redirect('pat-home',pk=email)
+                return redirect('pat-home',pk=pd_id)
+            elif (category == "doctor"):
+                doctor = Doctor()
+                doctor.doc_id=pd_id
+                doctor.name = name
+                doctor.email = email
+                doctor.password = password
+                doctor.licence_no = lic_no
+                doctor.save()
+                return redirect('pat-home',pk=pd_id)
     return render(request,'panacea_app/login_register.html')
 
 def doctordetails(request):
@@ -34,6 +50,14 @@ def patientdetails(request):
     return render(request,'panacea_app/patientdetails.html')
 
 def contact_us(request):
+    if(request.method=="POST"):
+        name=request.POST.get('firstname')
+        rec_email=request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = f'Hi {name}, thank you for contacting Panacea our agents will get in touch with you soon...'
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [rec_email, ]
+        send_mail( subject, message, email_from, recipient_list )
     return render(request, 'panacea_app/contact_us.html')
 		
 def about_us(request):
