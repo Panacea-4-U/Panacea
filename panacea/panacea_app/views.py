@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from panacea_app.models import Patient, TempDb
+from django.core.mail import send_mail, BadHeaderError
 # Create your views here.
 
 def home(request):
@@ -34,7 +35,7 @@ def patientdetails(request):
 
 def contact_us(request):
     return render(request, 'panacea_app/contact_us.html')
-
+		
 def about_us(request):
     return render(request, 'panacea_app/about_us.html')
     
