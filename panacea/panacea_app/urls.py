@@ -10,5 +10,6 @@ urlpatterns = [
     path('contact_us',views.contact_us,name='contact us'),
     path('doctor-details', views.doctordetails,name='doctordetails'),
     path('patient-details', views.patientdetails,name='patientdetails'),
-    path('db_check/',views.check, name='check')
+    path('db_check/',views.check, name='check'),
+    path('services/',views.services, name='services')
 ]

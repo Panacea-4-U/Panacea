@@ -84,9 +84,9 @@ WSGI_APPLICATION = 'panacea.wsgi.application'
 DATABASES = {  
     'default': {  
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': '',  
-        'USER': '',  
-        'PASSWORD': '',  
+        'NAME': 'panacea',  
+        'USER': 'root',  
+        'PASSWORD': 'hussein',  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  

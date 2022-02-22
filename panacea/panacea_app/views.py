@@ -75,3 +75,6 @@ def check(request):
 
 def pat_home(request,pk):
     return render(request,'panacea_app/patienthome.html')
+
+def services(request):
+    return render(request, 'panacea_app/services.html')
