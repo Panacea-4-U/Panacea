@@ -7,6 +7,7 @@ from django.conf import settings
 from django.views.generic.list import ListView
 from django.core.mail import send_mail
 from random import randint
+from django.db.models import Q
 
 # Create your views here.
 
@@ -80,21 +81,23 @@ def pat_home(request,pk):
 
 
 class SearchView(ListView):
-    model = Doctor
-    template_name = 'panacea_app/services.html'
-    context_object_name = 'all_search_results'
-    print("Checking")
+	model = Doctor
+	template_name = 'panacea_app/services.html'
+	context_object_name = 'all_search_results'
+	print("Checking")
 
-    def get_queryset(self):
-       result = super(SearchView, self).get_queryset()
-       query = self.request.GET.get('search')
-       print(query)
-       if query:
-          postresult = Doctor.objects.filter(name__contains=query)
-          result = postresult
-       else:
-           result = Doctor.objects.all()
-       return result
+	def get_queryset(self):
+		result = super(SearchView, self).get_queryset()
+		query = self.request.GET.get('search')
+		print(query)
+		if query:
+			postresult = Doctor.objects.filter(
+				Q(name__contains=query) | Q(email__contains=query)
+			)
+			result = postresult
+		else:
+			result = Doctor.objects.all()
+		return result
 
 # def services(request):
 #     return render(request, 'panacea_app/services.html')
