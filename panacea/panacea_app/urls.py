@@ -11,5 +11,5 @@ urlpatterns = [
     path('doctor-details', views.doctordetails,name='doctordetails'),
     path('patient-details', views.patientdetails,name='patientdetails'),
     path('db_check/',views.check, name='check'),
-    path('services/',views.services, name='services')
+    path('services/',views.SearchView.as_view(), name='services')
 ]
