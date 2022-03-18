@@ -6,7 +6,8 @@
 {% endblock connectcss %}
 
 {% block login %}
-<li class="menu__group"><a href="{% url 'login-register' %}" class="menu__link r-link text-underlined">LOGIN/REGISTER</a></li>
+{% comment %} <li class="menu__group"><a href="{% url 'login-register' %}" class="menu__link r-link text-underlined">LOGIN/REGISTER</a></li> {% endcomment %}
+<a href="{% url 'login-register' %}"><button class="btn btn-success">Sign Up / Sign In</button></a>
 {% endblock login %}
 
 
