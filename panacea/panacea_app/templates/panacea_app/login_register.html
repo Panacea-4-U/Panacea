@@ -24,11 +24,59 @@
     <!-- add icon link -->
     <link rel="icon" href="{% static 'panacea_app/panacea logo.jpeg' %}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            font-family: "Poppins", sans-serif;
+        }
+        .option-group {
+            margin-bottom: 1em;
+            zoom: 1;
+        }
+        .option-group:before,
+        .option-group:after {
+            content: "";
+            display: table;
+        }
+        .option-group:after {
+            clear: both;
+        }
+        .select-group {
+            margin-bottom: 1em;
+            zoom: 1;
+        }
+        .select-group:before,
+        .select-group:after {
+            content: "";
+            display: table;
+        }
+        .select-group:after {
+            clear: both;
+        }
+        select {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+            height: 50px;
+        }
+        
+        option {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+        }
+        .border-radius {
+            border-radius: 12px;
+        }
+    </style>
 </head>
 
 
 <body style="background-color:#EEEEEE;">
-    <div class="container right-panel-active" id="container" style="height: 90%;">
+    <div class="container right-panel-active" id="container" style="height: 70%; width: 75%;">
         <div class="form-container sign-up-container">
             <form method="post">
                 {% csrf_token %}
@@ -39,17 +87,17 @@
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your email for registration</span> -->
-                <input name="name" type="text" placeholder="Name" style="margin:15px 7px 7px 7px" required />
-                <input name="email" type="email" placeholder="Email" style="margin-bottom: 7px" required />
-                <input name="password" type="password" placeholder="Password" style="margin-bottom: 7px" required />
-                <input name="con_password" type="password" placeholder="Confirm Password" style="margin-bottom: 7px" required />
-                <select name="category">
-                    <option value="doctor">Doctor</option>
-                    <option value="patient">Patient</option>
+                <input class="border-radius" name="name" type="text" placeholder="Name" style="margin:15px 7px 7px 7px" required />
+                <input class="border-radius" name="email" type="email" placeholder="Email" style="margin-bottom: 7px" required />
+                <input class="border-radius" name="password" type="password" placeholder="Password" style="margin-bottom: 7px" required />
+                <input class="border-radius" name="con_password" type="password" placeholder="Confirm Password" style="margin-bottom: 7px" required />
+                <select class="border-radius" name="category">
+                    <option class="border-radius" value="doctor">Doctor</option>
+                    <option class="border-radius" value="patient">Patient</option>
                 </select>
                 <br>
                 <input style="display: None" name="login" value="login">
-                <button type="submit">Register</button>
+                <button class="border-radius" type="submit">Register</button>
                 {% comment %} <input type="submit" value="Submit" class="btn" style="padding: 20px 20px; background-color: #11CB95"> {% endcomment %}
             </form>
         </div>
@@ -63,10 +111,10 @@
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your account</span>
-                <input type="email" placeholder="Email" style="margin:7px" required />
-                <input type="password" placeholder="Password" style="margin-bottom: 7px" required />
+                <input class="border-radius" type="email" placeholder="Email" style="margin:7px" required />
+                <input class="border-radius" type="password" placeholder="Password" style="margin-bottom: 7px" required />
                 <a href="#">Forgot your password?</a>
-                <button type="submit">Sign In</button>
+                <button class="border-radius" type="submit">Sign In</button>
             </form>
         </div>
         <div class="overlay-container">
@@ -74,13 +122,13 @@
                 <div class=" overlay-panel overlay-left">
                     <h1>Welcome Back!</h1>
                     <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
+                    <button class="ghost border-radius" id="signIn">Sign In</button>
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>Welcome to Panacea</h1>
                     <p>A one stop solution to all your health problems. <br>Register now and start your journey with us.
                     </p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                    <button class="ghost border-radius" id="signUp">Sign Up</button>
                 </div>
             </div>
         </div>

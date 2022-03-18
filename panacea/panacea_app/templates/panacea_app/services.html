@@ -71,11 +71,11 @@
             {% for result in all_search_results %}
                 <div class="col-md-6 col-lg-4">
                     <div class="card" style="margin-bottom: 12px; border-radius: 10px;">
-                        <h5 class="card-header">{{ result.name }}</h5>
+                        <h5 class="card-header">Name: {{ result.name }}</h5>
                         <div class="card-body">
-                        <h5 class="card-title">{{ result.doc_id }}</h5>
-                        <p class="card-text doc_email">{{ result.email }}</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">ID: {{ result.doc_id }}</h5>
+                        <p class="card-text doc_email">Email: {{ result.email }}</p>
+                        <a href="#" class="btn btn-primary">More Info</a>
                         </div>
                     </div>
                 </div>
