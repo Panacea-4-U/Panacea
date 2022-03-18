@@ -84,7 +84,7 @@ class SearchView(ListView):
     model = Doctor
     template_name = 'panacea_app/services.html'
     context_object_name = 'all_search_results'
-    paginate_by = 20
+    paginate_by = 16
     print("Checking")
 
     def get_queryset(self):
