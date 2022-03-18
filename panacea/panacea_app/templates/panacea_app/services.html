@@ -11,17 +11,19 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        justify-content: center;
+        justify-content: flex-end;
+        margin-top: 6px;
+        margin-bottom: 10px;
     }
 </style>
 {% endblock style %}
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid" style="margin-top: 3%; max-width: 92%">
         <form method="GET" action="" style="margin-bottom: 16px;">
-            <div class="row height d-flex justify-content-center align-items-center">
-                <div class="col-md-6">
-                    <div class="form"> <i class="fa fa-search"></i> <input style="border-radius: 8px" type="text" class="form-control form-input" placeholder="Search anything..." name="search"> 
+            <div class="row height align-items-center">
+                <div class="col-md-12">
+                    <div class="form"> <i class="fa fa-search"></i> <input id="myInput" onkeyup="myFunction()" style="border-radius: 8px" type="text" class="form-control form-input" placeholder="Search anything..." name="search"> 
                         <span style="margin: -6px;" class="left-pan">
                             <button class="btn btn-primary" type="submit"> Search </button>
                         </span> 
@@ -30,7 +32,7 @@
             </div>
         </form>
     
-        <table style="border-color: #bfc3c7;" class="table table-bordered">
+        {% comment %} <table style="border-color: #bfc3c7;" class="table table-bordered">
             <thead style="text-align: center;" class="thead-dark">
                 <tr>
                     <th style="text-align: center;" scope="col">Name</th>
@@ -47,8 +49,8 @@
                     </tr>
                 {% endfor %}
             </tbody>
-        </table>
-        <div class="pagination">
+        </table> {% endcomment %}
+        {% comment %} <div class="pagination">
             <span class="step-links">
                 {% if page_obj.has_previous %}
                     <a href="?page=1"><i class="fas fa-regular fa-backward-fast"></i></a>
@@ -64,7 +66,40 @@
                 <a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-regular fa-angles-right"></i></a>
                 {% endif %}
             </span>
+        </div> {% endcomment %}
+        <div class="row">
+            {% for result in all_search_results %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card" style="margin-bottom: 12px; border-radius: 10px;">
+                        <h5 class="card-header">{{ result.name }}</h5>
+                        <div class="card-body">
+                        <h5 class="card-title">{{ result.doc_id }}</h5>
+                        <p class="card-text doc_email">{{ result.email }}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock content %}
 
+{% block script %}
+<script>
+    function myFunction() {
+        var input, filter, ul, li, name, i, email;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        const cards = document.getElementsByClassName("card");
+        for (i = 0; i < cards.length; i++) {
+            name = cards[i].getElementsByTagName("h5")[0];
+            email = cards[i].getElementsByClassName("doc_email")[0];
+            if (name.innerHTML.toUpperCase().includes(filter) || email.innerHTML.toUpperCase().includes(filter)) {
+                cards[i].parentElement.style.display = "";
+            } else {
+                cards[i].parentElement.style.display = "none";
+            }
+        }
+    }
+</script>
+{% endblock script %}
