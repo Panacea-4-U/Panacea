@@ -1,1 +1,1 @@
-# Panacea App
+# Panacea
